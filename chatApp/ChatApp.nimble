@@ -6,7 +6,7 @@ description   = "Nim In Action Chat App"
 license       = "MIT"
 srcDir        = "src"
 binDir        = "bin"
-bin           = @["ChatApp", "client", "protocol"]
+bin           = @["ChatApp", "client", "protocol","server"]
 
 
 

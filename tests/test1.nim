@@ -8,6 +8,8 @@ comments]#
 
 proc echoo[T](x: T) = stdout.write(x)
 
+echoo "hello     "
+echoo "hmm...  "
 echoo "|"
 echoo "|"
 echo("|")
@@ -82,14 +84,6 @@ proc overUnder100(x:int) =
  of 101..high(int) : echoo "The number is greater than 100 "
  else: echoo "Oh no!! "
 
-echo "Your name: "
-var name: string = readLine(stdin)
-
-case name:
-of "Mae": echo "Hi ", name
-of "Paul": echo "Hello, ", name, "!!!"
-else: echo "Helloooooo ", name, "!!!!!!!!!!!"
-
 # For loop with iterator
 for iter, x in newSeq:
  overUnder100(x)
@@ -124,13 +118,18 @@ echo "e is ", e
 
 # This will work because it's a reference to an object
 let f : CordsRef = CordsRef(x: 3, y: 5)
+let f2 : CordsRef = CordsRef(x: 6, y: 6)
 echo "Original coordinates of f: ", f.x, " ", f.y
+
+## Change the coordinates
 proc changeCords(a : CordsRef) =
  a.x = 0
  a.y = 0
 
 changeCords(f)
 echo "New coordinates of f: ", f.x, " ", f.y
+changeCords f2
+echo "New coordinates of f2: ", f2.x, " ", f2.y
 
 # Tuples - Structural Types 
 type Cords3 = (int, int, int)
@@ -149,7 +148,7 @@ var color4: Colors2 = high Colors2
 echo &"color1, color2: {color1} {color2}"
 echo &"color3, color4: {color3} {color4}"
 
-# Compose function examples
+## Compose function examples
 proc compose1(f: func, g: func, x: any): any =
  f(g(x))
 echo "2+2+2 = ", compose1(addTwo, addTwo, 2)
@@ -172,3 +171,12 @@ proc compose4[A, B, C](f: A->B, g: B->C): (A)->C =
 echo "2+2+2 = ", compose4(addTwo, addTwo)(2)
 
 echo "2+2+2 = ", compose4((x: int) => x+2, (x: int)=>x+2)(2)
+
+echo "Your name: "
+var name: string = readLine(stdin)
+
+case name:
+of "Mae": echo "Hi ", name
+of "Paul": echo "Hello, ", name, "!!!"
+else: echo "Helloooooo ", name, "!!!!!!!!!!!"
+

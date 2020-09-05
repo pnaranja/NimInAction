@@ -1,6 +1,10 @@
 .idea/
 *.code-workspace
+.DS_Store
 
 nimcache/
 nimblecache/
 htmldocs/
+
+*/bin
+
